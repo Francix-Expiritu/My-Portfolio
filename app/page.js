@@ -6,6 +6,7 @@ import { Github, Linkedin, Mail, ExternalLink, Sun, Moon, MapPin, Briefcase, Cod
 export default function Portfolio() {
   const [darkMode, setDarkMode] = useState(false);
   const [activeTab, setActiveTab] = useState('work');
+  const [activeTestimonial, setActiveTestimonial] = useState(0);
   const [scrolled, setScrolled] = useState(false);
   const [loading, setLoading] = useState(true);
 
@@ -50,41 +51,51 @@ export default function Portfolio() {
     title: "PiyuCheckpoint",
     description: "A Web-Based Security Identification System using RFID technology for efficient personnel and vehicle access monitoring.",
     tech: ["JavaScript", "C++", "RFID", "Web Serial API"],
-    year: "2025",
+    year: "2024",
     color: "from-blue-500 to-indigo-500",
-    image: "/piyucheckpoint.png"
+    image: "/piyucheckpoint.png",
+    link: "https://piyu-checkpoint.vercel.app/",
+    github: "https://github.com/Francixxx/Piyu-Checkpoint"
   },
   {
     title: "Food O' Clock",
     description: "A responsive E-commerce website for ordering food online, featuring menu browsing, cart management, and checkout functionality.",
     tech: ["HTML", "CSS", "JavaScript"],
     year: "2024",
-    color: "from-orange-500 to-red-500",
-    image: "/foodOclock.jpg"
+    color: "from-orange-400 to-red-500",
+    image: "/foodOclock.jpg",
+    link: "https://francixxx.github.io/Food-O-Clock/",
+    github: "https://github.com/Francixxx/Food-O-Clock"
   },
   {
     title: "Inzpect Scoreboard",
     description: "A real-time digital scoreboard system for tracking and displaying live competition scores using React.",
     tech: ["React.js", "Node.js", "Express"],
     year: "2024",
-    color: "from-purple-500 to-pink-500",
-    image: "/scoreboard.jpg"
+    color: "from-purple-400 to-pink-500",
+    image: "/scoreboard.jpg",
+    link: "https://inzpect-scoreboard.vercel.app/",
+    github: "https://github.com/Francixxx/Inzpect-Scoreboard"
   },
   {
     title: "Inzpect Selfie In & Out Attendance App",
     description: "A mobile attendance system using selfie capture for time-in and time-out verification.",
     tech: ["React Native", "Expo", "Node.js", "MySQL"],
     year: "2024",
-    color: "from-green-500 to-emerald-500"
-    // image: "/selfie-app.png" // Add a valid image path here
+    color: "from-green-400 to-emerald-500",
+    image: "/selfie-app.png",
+    link: "https://play.google.com/store/apps/details?id=com.inzpect.selfieinout",
+    github: "https://github.com/Francixxx/Selfie-In-Out-App"
   },
   {
     title: "PatrolNet",
     description: "A Web and Mobile-based Patrol Monitoring System for security management, featuring real-time reporting and tracking.",
     tech: ["React.js", "React Native", "Node.js", "Express", "MySQL"],
-    year: "2025",
-    color: "from-cyan-500 to-blue-500",
-    image: "/PatrolNet.png"
+    year: "2024",
+    color: "from-cyan-400 to-blue-500",
+    image: "/PatrolNet.png",
+    link: "https://patrolnet.vercel.app/",
+    github: "https://github.com/Francixxx/PatrolNet"
   }
 ];
 
@@ -96,10 +107,29 @@ export default function Portfolio() {
   const skills = [
     { name: "JavaScript/TypeScript", level: 80, color: "bg-yellow-500" },
     { name: "React & Next.js", level: 90, color: "bg-blue-500" },
+    { name: "React Native", level: 75, color: "bg-sky-500" },
     { name: "Python & AI/ML", level: 60, color: "bg-green-500" },
     { name: "PHP & Laravel", level: 80, color: "bg-purple-500" },
     { name: "C++ & IOT", level: 60, color: "bg-purple-500" },
     { name: "Cloud & DevOps", level: 30, color: "bg-cyan-500" }
+  ];
+
+  const testimonials = [
+    {
+      quote: "Francis was a huge help on our capstone project. His expertise in React and Node.js was invaluable, and he was a great mentor to our team.",
+      name: "John Dela Cruz",
+      company: "BSCS Student, University of the Philippines"
+    },
+    {
+      quote: "Collaborating with Francis on a freelance project was a fantastic learning experience. He writes clean, efficient code and is always willing to share his knowledge.",
+      name: "Maria Santos",
+      company: "BSIT Student, Ateneo de Manila University"
+    },
+    {
+      quote: "I was struggling with my mobile app assignment, and Francis's guidance on React Native was a lifesaver. He explains complex concepts clearly and patiently.",
+      name: "Kevin Reyes",
+      company: "Computer Engineering Student, De La Salle University"
+    }
   ];
 
   return (
@@ -146,7 +176,7 @@ export default function Portfolio() {
                   onClick={toggleDarkMode}
                   className={`p-2 rounded-full ${bgPrimary} ${borderColor} border transition-all hover:scale-110`}
                 >
-                  {darkMode ? <Sun size={18} /> : <Moon size={18} />}
+                  {darkMode ? <Sun size={18} className={`${textPrimary}`} /> : <Moon size={18} className={`${textPrimary}`} />}
                 </button>
               </div>
             </div>
@@ -270,29 +300,42 @@ export default function Portfolio() {
 
           <div className="grid md:grid-cols-2 gap-6">
             {projects.map((project, index) => (
-              <div key={index} className={`group ${bgSecondary} border ${borderColor} rounded-2xl overflow-hidden hover:scale-[1.02] transition-all duration-300 cursor-pointer ${index === 0 ? 'md:col-span-2' : ''}`}>
-                <div className={`relative h-48 overflow-hidden ${darkMode ? 'bg-slate-950' : 'bg-gray-100'}`}>
+              <div key={index} className={`group relative ${bgSecondary} border ${borderColor} rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/20 ${index === 0 ? 'md:col-span-2' : ''}`}>
+                <div className={`absolute inset-0 bg-gradient-to-r ${project.color} opacity-0 group-hover:opacity-20 transition-opacity duration-300`}></div>
+                <div className={`relative h-60 overflow-hidden ${darkMode ? 'bg-slate-950' : 'bg-gray-100'}`}>
                   {project.image && (
                     <Image
                       src={project.image}
                       alt={`Screenshot of ${project.title}`}
                       fill
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                      className="object-cover object-center group-hover:object-contain transition-all duration-300"
+                      className="object-cover object-center group-hover:scale-105 transition-all duration-500 ease-in-out"
                     />
                   )}
-                  <div className="absolute top-4 right-4 px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-white text-xs font-semibold">
+                  <div className="absolute top-4 right-4 px-3 py-1 bg-black/30 backdrop-blur-sm rounded-full text-white text-xs font-semibold">
                     {project.year}
+                  </div>
+                  <div className="absolute inset-0 bg-black/50 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <a href={project.link} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2 bg-white/90 text-black rounded-lg font-semibold hover:scale-105 transition-transform">
+                      <ExternalLink size={16} />
+                      View Live
+                    </a>
+                    <a href={project.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2 bg-gray-800/90 text-white rounded-lg font-semibold hover:scale-105 transition-transform">
+                      <Github size={16} />
+                      Code
+                    </a>
                   </div>
                 </div>
                 <div className="p-6">
-                  <h3 className={`text-xl font-bold ${textPrimary} mb-2 group-hover:text-blue-500 transition-colors`}>
-                    {project.title}
-                  </h3>
+                  <a href={project.link} target="_blank" rel="noopener noreferrer">
+                    <h3 className={`text-xl font-bold ${textPrimary} mb-2 transition-colors`}>
+                      {project.title}
+                    </h3>
+                  </a>
                   <p className={`${textSecondary} mb-4 text-sm`}>{project.description}</p>
                   <div className="flex flex-wrap gap-2">
                     {project.tech.map((tech, i) => (
-                      <span key={i} className={`px-3 py-1 ${bgPrimary} rounded-lg text-xs ${textSecondary}`}>
+                      <span key={i} className={`px-3 py-1 ${bgPrimary} border ${borderColor} rounded-lg text-xs ${textSecondary}`}>
                         {tech}
                       </span>
                     ))}
@@ -394,11 +437,48 @@ export default function Portfolio() {
         </div>
       </section>
 
-   
-      <section id="contact" className="px-6 py-20">
+      <section id="testimonials" className="px-6 py-20">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className={`text-4xl font-bold ${textPrimary} mb-4`}>What My Clients Say</h2>
+          <p className={`${textSecondary} mb-12`}>Kind words from people I've worked with.</p>
+
+          <div className={`relative ${bgSecondary} border ${borderColor} rounded-2xl p-8 md:p-12`}>
+            <div className="relative h-48 flex items-center justify-center">
+              {testimonials.map((testimonial, index) => (
+                <div
+                  key={index}
+                  className={`absolute inset-0 transition-opacity duration-500 ease-in-out flex flex-col justify-center ${activeTestimonial === index ? 'opacity-100' : 'opacity-0'}`}
+                >
+                  <p className={`text-xl italic ${textPrimary} mb-6`}>
+                    &ldquo;{testimonial.quote}&rdquo;
+                  </p>
+                  <div className="flex items-center justify-center">
+                    <div>
+                      <div className={`font-bold ${textPrimary}`}>{testimonial.name}</div>
+                      <div className={textSecondary}>{testimonial.company}</div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <button
+              onClick={() => setActiveTestimonial((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1))}
+              className={`absolute top-1/2 -translate-y-1/2 left-4 w-10 h-10 rounded-full ${bgPrimary} border ${borderColor} flex items-center justify-center hover:scale-110 transition-transform`}
+            >
+              <ChevronRight size={20} className={`transform rotate-180 ${textPrimary}`} />
+            </button>
+            <button
+              onClick={() => setActiveTestimonial((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1))}
+              className={`absolute top-1/2 -translate-y-1/2 right-4 w-10 h-10 rounded-full ${bgPrimary} border ${borderColor} flex items-center justify-center hover:scale-110 transition-transform`}
+            >
+              <ChevronRight size={20} className={`${textPrimary}`} />
+            </button>
+          </div>
+        </div>
+      </section>      <section id="contact" className="px-6 py-20">
         <div className="max-w-4xl mx-auto">
           <div className={`${bgSecondary} border ${borderColor} rounded-3xl p-12 text-center relative overflow-hidden`}>
-            <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-96 h-96 bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-full blur-3xl"></div>
             <div className="relative z-10 space-y-6">
               <h2 className={`text-4xl font-bold ${textPrimary}`}>
                 Let&apos;s Build Something Amazing
@@ -407,14 +487,15 @@ export default function Portfolio() {
                 Have a project in mind? Whether it&apos;s a startup idea, enterprise solution, or just want to chat about tech - I&apos;m all ears.
               </p>
               <div className="flex flex-wrap justify-center gap-4 pt-4">
-                <a href="Francisdizonespiritu09@gmail.com" className={`group px-8 py-4 bg-gradient-to-r ${accentColor} text-white rounded-xl font-medium hover:shadow-lg hover:shadow-blue-500/25 transition-all flex items-center gap-2`}>
+                <a href="mailto:francisdizonespiritu07@gmail.com" className={`group px-8 py-4 bg-gradient-to-r ${accentColor} text-white rounded-xl font-medium hover:shadow-lg hover:shadow-blue-500/25 transition-all flex items-center gap-2`}>
                   <Mail size={20} />
                   Email Me
                   <ArrowUpRight size={18} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </a>
-                <a href="#" className={`px-8 py-4 ${bgPrimary} border ${borderColor} rounded-xl font-medium hover:scale-105 transition-all ${textPrimary} flex items-center gap-2`}>
-                  <MessageCircle size={20} />
-                  Schedule Call
+                <a href="https://linkedin.com/in/francis-espiritu" target="_blank" rel="noopener noreferrer" className={`group px-8 py-4 ${bgPrimary} border ${borderColor} rounded-xl font-medium hover:scale-105 transition-all ${textPrimary} flex items-center gap-2`}>
+                  <Linkedin size={20} />
+                  Connect on LinkedIn
+                  <ArrowUpRight size={18} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </a>
               </div>
             </div>
