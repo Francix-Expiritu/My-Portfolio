@@ -63,7 +63,7 @@ export default function Portfolio() {
     tech: ["HTML", "CSS", "JavaScript"],
     year: "2024",
     color: "from-orange-400 to-red-500",
-    image: "/foodOclock.jpg",
+    image: "/FoodOclock.jpg",
     link: "https://francixxx.github.io/Food-O-Clock/",
     github: "https://github.com/Francixxx/Food-O-Clock"
   },
@@ -492,7 +492,7 @@ export default function Portfolio() {
                   Email Me
                   <ArrowUpRight size={18} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </a>
-                <a href="https://linkedin.com/in/francis-espiritu" target="_blank" rel="noopener noreferrer" className={`group px-8 py-4 ${bgPrimary} border ${borderColor} rounded-xl font-medium hover:scale-105 transition-all ${textPrimary} flex items-center gap-2`}>
+                <a href="https://linkedin.com/in/francis-espiritu-4776562b1" target="_blank" rel="noopener noreferrer" className={`group px-8 py-4 ${bgPrimary} border ${borderColor} rounded-xl font-medium hover:scale-105 transition-all ${textPrimary} flex items-center gap-2`}>
                   <Linkedin size={20} />
                   Connect on LinkedIn
                   <ArrowUpRight size={18} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
