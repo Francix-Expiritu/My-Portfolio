@@ -440,7 +440,7 @@ export default function Portfolio() {
       <section id="testimonials" className="px-6 py-20">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className={`text-4xl font-bold ${textPrimary} mb-4`}>What My Clients Say</h2>
-          <p className={`${textSecondary} mb-12`}>Kind words from people I've worked with.</p>
+          <p className={`${textSecondary} mb-12`}>Kind words from people I&apos;ve worked with.</p>
 
           <div className={`relative ${bgSecondary} border ${borderColor} rounded-2xl p-8 md:p-12`}>
             <div className="relative h-48 flex items-center justify-center">
